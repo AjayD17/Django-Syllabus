@@ -1,0 +1,365 @@
+========================================================
+        DATABASE (SQL / ORM) – SIMPLE EXPLANATION
+========================================================
+
+Database is used to store application data permanently.
+
+Examples:
+    • Student details
+    • Product information
+    • User accounts
+    • Attendance records
+
+Django supports:
+    • SQLite
+    • MySQL
+    • PostgreSQL
+
+Django mainly uses ORM (Object Relational Mapping)
+to interact with databases.
+
+========================================================
+1. SQLITE
+========================================================
+
+Definition:
+SQLite is the default database provided with Django.
+
+--------------------------------------------------------
+Features of SQLite
+--------------------------------------------------------
+
+    • Lightweight database
+    • No separate installation required
+    • Easy for beginners
+    • Stored as a single file
+
+--------------------------------------------------------
+Default SQLite File
+--------------------------------------------------------
+
+db.sqlite3
+
+This file stores all database tables and records.
+
+========================================================
+EXAMPLE
+========================================================
+
+When you create a Django project:
+
+django-admin startproject myproject
+
+Django automatically configures SQLite.
+
+--------------------------------------------------------
+settings.py
+--------------------------------------------------------
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+========================================================
+OUTPUT
+========================================================
+
+A file named:
+
+db.sqlite3
+
+is automatically created.
+
+========================================================
+WHY SQLITE IS IMPORTANT?
+========================================================
+
+Advantages:
+    • Easy setup
+    • No extra configuration
+    • Good for small projects
+    • Best for learning Django
+
+========================================================
+2. MYSQL / POSTGRESQL
+========================================================
+
+Definition:
+MySQL and PostgreSQL are external databases used for
+large and real-world applications.
+
+--------------------------------------------------------
+MySQL
+--------------------------------------------------------
+
+MySQL is a popular relational database used in:
+    • Websites
+    • E-commerce systems
+    • Enterprise applications
+
+--------------------------------------------------------
+PostgreSQL
+--------------------------------------------------------
+
+PostgreSQL is an advanced database known for:
+    • High performance
+    • Large data handling
+    • Better scalability
+
+========================================================
+MYSQL CONFIGURATION EXAMPLE
+========================================================
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'college_db',
+        'USER': 'root',
+        'PASSWORD': 'mypassword',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+
+========================================================
+OUTPUT
+========================================================
+
+Django connects to MySQL database:
+
+college_db
+
+========================================================
+WHY MYSQL / POSTGRESQL ARE IMPORTANT?
+========================================================
+
+Advantages:
+    • Handle large data
+    • Better performance
+    • Multi-user support
+    • Suitable for real-time applications
+
+========================================================
+3. ORM (OBJECT RELATIONAL MAPPING)
+========================================================
+
+Full Form:
+ORM = Object Relational Mapping
+
+--------------------------------------------------------
+Definition
+--------------------------------------------------------
+
+ORM allows developers to interact with databases using
+Python code instead of writing SQL queries manually.
+
+========================================================
+WITHOUT ORM (SQL)
+========================================================
+
+SELECT * FROM student;
+
+========================================================
+WITH DJANGO ORM
+========================================================
+
+Student.objects.all()
+
+--------------------------------------------------------
+Meaning
+--------------------------------------------------------
+
+Student
+    → Django model
+
+objects
+    → Database manager
+
+all()
+    → Fetch all records
+
+========================================================
+OUTPUT
+========================================================
+
+Database Table:
+
++----+---------+-----+
+| id | name    | age |
++----+---------+-----+
+| 1  | Ajay    | 20  |
+| 2  | Rahul   | 21  |
++----+---------+-----+
+
+Python Output:
+
+<QuerySet [
+    <Student: Ajay>,
+    <Student: Rahul>
+]>
+
+========================================================
+4. IMPORTANT ORM QUERIES
+========================================================
+
+--------------------------------------------------------
+a) all()
+--------------------------------------------------------
+
+Definition:
+Retrieves all records from database.
+
+Example:
+
+Student.objects.all()
+
+--------------------------------------------------------
+SQL Equivalent
+--------------------------------------------------------
+
+SELECT * FROM student;
+
+--------------------------------------------------------
+OUTPUT
+--------------------------------------------------------
+
+<QuerySet [
+    <Student: Ajay>,
+    <Student: Rahul>
+]>
+
+========================================================
+b) filter()
+========================================================
+
+Definition:
+Retrieves records matching a condition.
+
+--------------------------------------------------------
+Example
+--------------------------------------------------------
+
+Student.objects.filter(age=20)
+
+--------------------------------------------------------
+SQL Equivalent
+--------------------------------------------------------
+
+SELECT * FROM student
+WHERE age=20;
+
+--------------------------------------------------------
+OUTPUT
+--------------------------------------------------------
+
+<QuerySet [
+    <Student: Ajay>
+]>
+
+========================================================
+c) get()
+========================================================
+
+Definition:
+Retrieves a single record from database.
+
+--------------------------------------------------------
+Example
+--------------------------------------------------------
+
+Student.objects.get(id=1)
+
+--------------------------------------------------------
+SQL Equivalent
+--------------------------------------------------------
+
+SELECT * FROM student
+WHERE id=1;
+
+--------------------------------------------------------
+OUTPUT
+--------------------------------------------------------
+
+<Student: Ajay>
+
+========================================================
+5. DJANGO MODEL EXAMPLE
+========================================================
+
+from django.db import models
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+
+========================================================
+DATABASE TABLE CREATED
+========================================================
+
++----+---------+-----+
+| id | name    | age |
++----+---------+-----+
+| 1  | Ajay    | 20  |
+| 2  | Rahul   | 21  |
++----+---------+-----+
+
+========================================================
+6. WHY ORM IS IMPORTANT?
+========================================================
+
+Advantages:
+    • Less coding
+    • Easy database handling
+    • Faster development
+    • Better readability
+    • More security
+    • Prevents SQL Injection attacks
+
+========================================================
+7. REAL-TIME EXAMPLE
+========================================================
+
+Suppose you are building:
+    • College Management System
+
+Using ORM you can:
+    • Add students
+    • View attendance
+    • Update marks
+    • Delete records
+
+using simple Python code.
+
+========================================================
+8. FINAL SUMMARY TABLE
+========================================================
+
++-------------------+----------------------------------+-----------------------------+
+| Topic             | Description                      | Benefit                     |
++-------------------+----------------------------------+-----------------------------+
+| SQLite            | Default Django database          | Easy setup                  |
+| MySQL/PostgreSQL  | External databases               | Better performance          |
+| ORM               | Python-based database handling   | Easier and secure coding    |
+| all()             | Fetch all records                | Simple data retrieval       |
+| filter()          | Fetch matching records           | Conditional search          |
+| get()             | Fetch single record              | Retrieve specific data      |
++-------------------+----------------------------------+-----------------------------+
+
+========================================================
+9. FINAL CONCLUSION
+========================================================
+
+Django database system is powerful and beginner-friendly.
+
+Important Features:
+    • SQLite for easy learning
+    • MySQL/PostgreSQL for large applications
+    • ORM for simple database handling
+
+Result:
+👉 Fast, Secure, and Easy Database Operations
+
+========================================================

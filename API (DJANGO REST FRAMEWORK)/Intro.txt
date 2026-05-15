@@ -1,0 +1,317 @@
+========================================================
+    API (DJANGO REST FRAMEWORK) – SIMPLE EXPLANATION
+========================================================
+
+API in Django is mainly created using:
+
+Django REST Framework (DRF)
+
+DRF is used to build REST APIs for web and mobile
+applications.
+
+========================================================
+1. WHAT IS API?
+========================================================
+
+Full Form:
+API = Application Programming Interface
+
+--------------------------------------------------------
+Definition
+--------------------------------------------------------
+
+API allows different applications to communicate and
+exchange data with each other.
+
+--------------------------------------------------------
+Simple Example
+--------------------------------------------------------
+
+Suppose:
+    • Mobile App requests student data
+    • Django server sends student data
+
+Communication happens using API.
+
+========================================================
+2. WHAT IS REST API?
+========================================================
+
+Full Form:
+REST = Representational State Transfer
+
+--------------------------------------------------------
+Definition
+--------------------------------------------------------
+
+REST API is a web service that allows applications to
+send and receive data using HTTP methods.
+
+--------------------------------------------------------
+Common HTTP Methods
+--------------------------------------------------------
+
+GET
+    → Retrieve data
+
+POST
+    → Insert data
+
+PUT
+    → Update data
+
+DELETE
+    → Delete data
+
+========================================================
+3. REAL-TIME EXAMPLE OF REST API
+========================================================
+
+Suppose you are building:
+    • College Management System
+
+Mobile app requests:
+
+GET /students/
+
+Django API sends student data.
+
+========================================================
+4. SIMPLE DJANGO MODEL
+========================================================
+
+from django.db import models
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+
+========================================================
+5. SERIALIZER
+========================================================
+
+Definition:
+Serializer converts Django model data into JSON format.
+
+It also converts JSON data back into Python objects.
+
+========================================================
+WHY SERIALIZER IS IMPORTANT?
+========================================================
+
+Django models cannot be directly sent through API.
+
+Serializer converts:
+
+Python Object
+        ↓
+JSON Data
+
+========================================================
+6. SERIALIZER EXAMPLE
+========================================================
+
+from rest_framework import serializers
+from .models import Student
+
+class StudentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Student
+        fields = '__all__'
+
+========================================================
+7. OUTPUT OF SERIALIZER
+========================================================
+
+Database Record:
+
++----+---------+-----+
+| id | name    | age |
++----+---------+-----+
+| 1  | Ajay    | 20  |
++----+---------+-----+
+
+--------------------------------------------------------
+JSON Output
+--------------------------------------------------------
+
+{
+    "id": 1,
+    "name": "Ajay",
+    "age": 20
+}
+
+========================================================
+8. CRUD APIs
+========================================================
+
+CRUD Operations:
+
+C → Create
+R → Read
+U → Update
+D → Delete
+
+========================================================
+9. GET API (READ DATA)
+========================================================
+
+Definition:
+GET method is used to retrieve data.
+
+--------------------------------------------------------
+Example
+--------------------------------------------------------
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import Student
+from .serializers import StudentSerializer
+
+@api_view(['GET'])
+def get_students(request):
+
+    students = Student.objects.all()
+    serializer = StudentSerializer(students, many=True)
+
+    return Response(serializer.data)
+
+========================================================
+OUTPUT
+========================================================
+
+[
+    {
+        "id": 1,
+        "name": "Ajay",
+        "age": 20
+    },
+    {
+        "id": 2,
+        "name": "Rahul",
+        "age": 21
+    }
+]
+
+========================================================
+10. POST API (CREATE DATA)
+========================================================
+
+Definition:
+POST method is used to insert new data.
+
+--------------------------------------------------------
+Example Request
+--------------------------------------------------------
+
+{
+    "name": "Priya",
+    "age": 19
+}
+
+========================================================
+OUTPUT
+========================================================
+
+{
+    "message": "Student Added Successfully"
+}
+
+========================================================
+11. PUT API (UPDATE DATA)
+========================================================
+
+Definition:
+PUT method is used to update existing data.
+
+--------------------------------------------------------
+Example Request
+--------------------------------------------------------
+
+{
+    "name": "Ajay",
+    "age": 22
+}
+
+========================================================
+OUTPUT
+========================================================
+
+{
+    "message": "Student Updated Successfully"
+}
+
+========================================================
+12. DELETE API (DELETE DATA)
+========================================================
+
+Definition:
+DELETE method is used to remove data.
+
+--------------------------------------------------------
+Example
+--------------------------------------------------------
+
+DELETE /students/1/
+
+========================================================
+OUTPUT
+========================================================
+
+{
+    "message": "Student Deleted Successfully"
+}
+
+========================================================
+13. WHY DJANGO REST FRAMEWORK IS IMPORTANT?
+========================================================
+
+Advantages:
+    • Easy API development
+    • JSON data support
+    • Faster backend development
+    • Used for mobile apps
+    • Secure API handling
+    • Easy CRUD operations
+
+========================================================
+14. REAL-TIME APPLICATIONS
+========================================================
+
+Django REST Framework is used in:
+    • Mobile Applications
+    • E-commerce Websites
+    • Banking Applications
+    • Social Media Apps
+    • College Management Systems
+
+========================================================
+15. FINAL SUMMARY TABLE
+========================================================
+
++-------------------+--------------------------------------+
+| Topic             | Description                          |
++-------------------+--------------------------------------+
+| REST API          | Web services for data communication  |
+| Serializer        | Converts data into JSON              |
+| CRUD APIs         | GET, POST, PUT, DELETE operations    |
++-------------------+--------------------------------------+
+
+========================================================
+16. FINAL CONCLUSION
+========================================================
+
+Django REST Framework helps developers build powerful
+REST APIs easily.
+
+Main Features:
+    • REST API support
+    • Serializer system
+    • CRUD operations
+    • JSON response handling
+
+Result:
+👉 Easy backend development for web and mobile apps
+
+========================================================

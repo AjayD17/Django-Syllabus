@@ -1,0 +1,251 @@
+========================================================
+        RUN SERVER IN DJANGO – SIMPLE EXPLANATION
+========================================================
+
+Command:
+
+python manage.py runserver
+
+========================================================
+1. WHAT IS RUNSERVER?
+========================================================
+
+Definition:
+runserver is a Django command used to start the
+development server.
+
+Simple Meaning:
+    • It runs the Django website locally on your computer.
+
+After running the server:
+    • You can open the website in browser
+    • Test webpages
+    • Check application output
+
+========================================================
+2. BREAKDOWN OF THE COMMAND
+========================================================
+
+python
+    → Runs Python program
+
+manage.py
+    → Django management file
+
+runserver
+    → Starts Django development server
+
+========================================================
+3. WHY RUNSERVER IS IMPORTANT?
+========================================================
+
+Without runserver:
+    • Django project will not start
+
+With runserver:
+    • Website becomes accessible in browser
+
+Result:
+👉 Used for testing and development
+
+========================================================
+4. HOW TO RUN DJANGO SERVER
+========================================================
+
+--------------------------------------------------------
+Step 1: Open Terminal
+--------------------------------------------------------
+
+Open:
+    • CMD
+    • PowerShell
+    • VS Code Terminal
+    • PyCharm Terminal
+
+--------------------------------------------------------
+Step 2: Move to Project Folder
+--------------------------------------------------------
+
+Example:
+
+cd myproject
+
+--------------------------------------------------------
+Step 3: Run Command
+--------------------------------------------------------
+
+python manage.py runserver
+
+========================================================
+5. OUTPUT OF RUNSERVER
+========================================================
+
+Example Output:
+
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+May 08, 2026 - 10:30:25
+Django version 5.x.x,
+using settings 'myproject.settings'
+
+Starting development server at:
+http://127.0.0.1:8000/
+
+Quit the server with CTRL-BREAK.
+
+========================================================
+6. IMPORTANT OUTPUT MEANINGS
+========================================================
+
+--------------------------------------------------------
+Watching for file changes
+--------------------------------------------------------
+
+Django automatically detects code changes.
+
+--------------------------------------------------------
+System check identified no issues
+--------------------------------------------------------
+
+No errors found in project.
+
+--------------------------------------------------------
+Starting development server at:
+http://127.0.0.1:8000/
+--------------------------------------------------------
+
+Website is running successfully.
+
+========================================================
+7. HOW TO OPEN WEBSITE
+========================================================
+
+Open browser and type:
+
+http://127.0.0.1:8000/
+
+OR
+
+http://localhost:8000/
+
+========================================================
+8. EXAMPLE WEBPAGE OUTPUT
+========================================================
+
+If Django installed correctly:
+
+--------------------------------------------------------
+Browser Output
+--------------------------------------------------------
+
+The install worked successfully!
+Congratulations!
+
+You are seeing this page because DEBUG=True
+and you have not configured any URLs.
+
+========================================================
+9. CUSTOM PORT NUMBER
+========================================================
+
+You can run server on different port.
+
+Example:
+
+python manage.py runserver 9000
+
+========================================================
+OUTPUT
+========================================================
+
+Starting development server at:
+http://127.0.0.1:9000/
+
+========================================================
+10. STOPPING THE SERVER
+========================================================
+
+Press:
+
+CTRL + C
+
+OR
+
+CTRL + BREAK
+
+========================================================
+11. COMMON ERRORS
+========================================================
+
+--------------------------------------------------------
+Error 1:
+python not recognized
+--------------------------------------------------------
+
+Reason:
+    • Python not installed properly
+
+--------------------------------------------------------
+Error 2:
+No module named django
+--------------------------------------------------------
+
+Reason:
+    • Django package not installed
+
+Solution:
+
+pip install django
+
+--------------------------------------------------------
+Error 3:
+Port already in use
+--------------------------------------------------------
+
+Reason:
+    • Another server using same port
+
+Solution:
+
+python manage.py runserver 8001
+
+========================================================
+12. REAL-TIME EXAMPLE
+========================================================
+
+Suppose you create:
+    • Login page
+    • Student management system
+    • Online shopping website
+
+To test the application:
+    • Start server using runserver command
+
+Then:
+    • Open browser
+    • Check webpages
+    • Verify outputs
+
+========================================================
+13. FINAL CONCLUSION
+========================================================
+
+python manage.py runserver
+
+is one of the most important Django commands.
+
+Purpose:
+    • Starts Django development server
+
+Benefits:
+    • Runs website locally
+    • Helps in testing
+    • Detects code changes automatically
+
+Result:
+👉 Used to view and test Django applications
+
+========================================================

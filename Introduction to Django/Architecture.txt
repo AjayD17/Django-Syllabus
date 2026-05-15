@@ -1,0 +1,87 @@
+Django MTV Architecture (Model – Template – View):
+Definition:
+    MTV is the design pattern used by Django to separate web application into 3 layers: 
+    Model, Template, and View.
+
+This separation makes the project:
+    # clean    
+    # easy to maintain
+    # scalable
+
+1. MODEL (Data Layer)
+    Meaning:
+        # Model handles database + data logic
+        # Represents tables in database
+        # Uses Django ORM (no SQL needed)
+
+Example:
+    class Student(models.Model):
+        name = models.CharField(max_length=100)
+        age = models.IntegerField()
+
+    This becomes a database table automatically.
+
+Model Responsibilities:
+    # Store data
+    # Retrieve data
+    # Update data
+    # Delete data
+
+2. TEMPLATE (UI Layer)
+    Meaning:
+        Template is the frontend (HTML pages)
+        # Shows data to user
+        # Handles UI design
+        # Uses HTML + Django template tags
+
+Example:
+    <h1>Student Name: {{ name }}</h1>
+
+Template Responsibilities:
+    # Display data
+    # Render HTML pages
+    # Show dynamic content
+
+3. VIEW (Logic Layer)
+    Meaning:
+        View is the brain of Django application
+        # Handles requests from user
+        # Connects Model + Template
+        # Sends response to browser
+
+Example:
+    from django.shortcuts import render
+    def student_view(request):
+        return render(request, "student.html", {"name": "Ajay"})
+
+View Responsibilities:
+    # Process user request
+    # Fetch data from Model
+    # Send data to Template
+
+FULL FLOW (VERY IMPORTANT)
+    User → View → Model → Database → View → Template → User
+
+REAL LIFE ANALOGY:
+    | MTV Part | Real Life Example            |
+    | -------- | ---------------------------- |
+    | Model    | Database (storage room)      |
+    | View     | Manager (decision maker)     |
+    | Template | Presentation (output screen) |
+
+SIMPLE EXPLANATION:
+    Model = Data
+    Template = UI
+    View = Logic
+
+EASY MEMORY TRICK:
+    Model → Data
+    Template → Design
+    View → Brain
+
+WHY MTV IS USED?
+    # Separates logic and UI
+    # Easy debugging
+    # Code reuse
+    # Scalable projects
+    # Team development easy

@@ -1,0 +1,158 @@
+========================================================
+                ORM – SIMPLE EXPLANATION
+========================================================
+
+Full Form:
+ORM = Object Relational Mapping
+
+========================================================
+1. DEFINITION OF ORM
+========================================================
+
+ORM is a feature in Django that allows developers to
+work with databases using Python code instead of
+writing SQL queries manually.
+
+Simple Meaning:
+    • ORM converts Python code into SQL automatically.
+
+========================================================
+2. WITHOUT ORM (RAW SQL)
+========================================================
+
+SQL Query:
+
+SELECT * FROM student;
+
+--------------------------------------------------------
+Meaning
+--------------------------------------------------------
+
+SELECT
+    → Retrieve data
+
+*
+    → All columns
+
+FROM student
+    → From student table
+
+--------------------------------------------------------
+Purpose
+--------------------------------------------------------
+
+Fetch all student records from database.
+
+========================================================
+3. OUTPUT OF SQL QUERY
+========================================================
+
+Database Table:
+
++----+---------+-----+
+| id | name    | age |
++----+---------+-----+
+| 1  | Ajay    | 20  |
+| 2  | Rahul   | 21  |
++----+---------+-----+
+
+Output:
+
+Ajay  → 20
+Rahul → 21
+
+========================================================
+4. WITH DJANGO ORM
+========================================================
+
+Django ORM Code:
+
+Student.objects.all()
+
+--------------------------------------------------------
+Meaning
+--------------------------------------------------------
+
+Student
+    → Django model (database table)
+
+objects
+    → Manager used for database operations
+
+all()
+    → Retrieve all records
+
+========================================================
+5. WHAT DJANGO DOES INTERNALLY
+========================================================
+
+Django automatically converts:
+
+Student.objects.all()
+
+into:
+
+SELECT * FROM student;
+
+So developers do not need to write SQL manually.
+
+========================================================
+6. OUTPUT OF DJANGO ORM
+========================================================
+
+Example Output:
+
+<QuerySet [
+    <Student: Ajay>,
+    <Student: Rahul>
+]>
+
+========================================================
+7. WHY ORM IS IMPORTANT?
+========================================================
+
+Advantages of ORM:
+
+    • Easy to understand
+    • Less coding
+    • Faster development
+    • No need to write SQL manually
+    • More secure
+    • Prevents SQL Injection attacks
+
+========================================================
+8. SIMPLE REAL-TIME EXAMPLE
+========================================================
+
+Suppose you are building:
+    • College Management System
+
+Using ORM you can:
+    • Add students
+    • View student records
+    • Update marks
+    • Delete attendance data
+
+using simple Python code.
+
+========================================================
+9. FINAL CONCLUSION
+========================================================
+
+Without ORM:
+
+SELECT * FROM student;
+
+With Django ORM:
+
+Student.objects.all()
+
+Result:
+👉 Easier
+👉 Faster
+👉 More Secure
+
+That is why ORM is one of the most important features
+in Django.
+
+========================================================

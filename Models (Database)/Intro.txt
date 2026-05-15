@@ -1,0 +1,345 @@
+========================================================
+        7. MODELS (DATABASE) – DJANGO
+========================================================
+
+In Django, Models are used to store and manage data
+inside databases.
+
+Important Concepts:
+    • ORM
+    • Models
+    • Fields
+
+========================================================
+1. ORM (OBJECT RELATIONAL MAPPING)
+========================================================
+
+Full Form:
+ORM = Object Relational Mapping
+
+--------------------------------------------------------
+Definition
+--------------------------------------------------------
+
+ORM allows developers to interact with databases using
+Python code instead of writing SQL queries manually.
+
+Simple Meaning:
+    • Django converts Python code into SQL automatically.
+
+========================================================
+WITHOUT ORM (RAW SQL)
+========================================================
+
+SELECT * FROM student;
+
+--------------------------------------------------------
+Meaning
+--------------------------------------------------------
+
+SELECT
+    → Retrieve data
+
+*
+    → All columns
+
+FROM student
+    → From student table
+
+========================================================
+WITH DJANGO ORM
+========================================================
+
+Student.objects.all()
+
+--------------------------------------------------------
+Meaning
+--------------------------------------------------------
+
+Student
+    → Django model
+
+objects
+    → Database manager
+
+all()
+    → Retrieve all records
+
+========================================================
+OUTPUT
+========================================================
+
+Database Table:
+
++----+---------+-----+
+| id | name    | age |
++----+---------+-----+
+| 1  | Ajay    | 20  |
+| 2  | Rahul   | 21  |
++----+---------+-----+
+
+Python Output:
+
+<QuerySet [
+    <Student: Ajay>,
+    <Student: Rahul>
+]>
+
+========================================================
+WHY ORM IS IMPORTANT?
+========================================================
+
+Advantages:
+    • Less coding
+    • Easier database handling
+    • Faster development
+    • Better security
+    • Prevents SQL Injection attacks
+
+========================================================
+2. MODELS
+========================================================
+
+Definition:
+Models are Python classes used to create database tables.
+
+Each model represents:
+    • One database table
+
+Each attribute represents:
+    • One table column
+
+========================================================
+MODEL EXAMPLE
+========================================================
+
+from django.db import models
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+
+========================================================
+EXPLANATION
+========================================================
+
+class Student(models.Model)
+    → Creates Student table
+
+name
+    → Column storing student name
+
+age
+    → Column storing student age
+
+========================================================
+DATABASE TABLE OUTPUT
+========================================================
+
++----+---------+-----+
+| id | name    | age |
++----+---------+-----+
+| 1  | Ajay    | 20  |
+| 2  | Rahul   | 21  |
++----+---------+-----+
+
+========================================================
+HOW DATABASE TABLE IS CREATED
+========================================================
+
+Step 1:
+Create model
+
+        ↓
+
+Step 2:
+Run migration commands
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+        ↓
+
+Step 3:
+Django automatically creates database table
+
+========================================================
+WHY MODELS ARE IMPORTANT?
+========================================================
+
+Advantages:
+    • Easy database creation
+    • Organized data structure
+    • Easy maintenance
+    • Faster development
+
+========================================================
+3. FIELDS
+========================================================
+
+Definition:
+Fields define the type of data stored inside database
+columns.
+
+========================================================
+COMMON DJANGO FIELDS
+========================================================
+
++--------------+----------------------------------+
+| Field Type   | Purpose                          |
++--------------+----------------------------------+
+| CharField    | Stores text                      |
+| IntegerField | Stores numbers                   |
+| DateField    | Stores dates                     |
++--------------+----------------------------------+
+
+========================================================
+a) CHARFIELD
+========================================================
+
+Definition:
+Used to store text values.
+
+--------------------------------------------------------
+Example
+--------------------------------------------------------
+
+name = models.CharField(max_length=100)
+
+--------------------------------------------------------
+Meaning
+--------------------------------------------------------
+
+max_length=100
+    → Maximum 100 characters allowed
+
+========================================================
+OUTPUT
+========================================================
+
++----+---------+
+| id | name    |
++----+---------+
+| 1  | Ajay    |
+| 2  | Rahul   |
++----+---------+
+
+========================================================
+b) INTEGERFIELD
+========================================================
+
+Definition:
+Used to store numeric values.
+
+--------------------------------------------------------
+Example
+--------------------------------------------------------
+
+age = models.IntegerField()
+
+========================================================
+OUTPUT
+========================================================
+
++----+-----+
+| id | age |
++----+-----+
+| 1  | 20  |
+| 2  | 21  |
++----+-----+
+
+========================================================
+c) DATEFIELD
+========================================================
+
+Definition:
+Used to store date values.
+
+--------------------------------------------------------
+Example
+--------------------------------------------------------
+
+dob = models.DateField()
+
+========================================================
+OUTPUT
+========================================================
+
++----+------------+
+| id | dob        |
++----+------------+
+| 1  | 2004-05-10 |
+| 2  | 2003-09-21 |
++----+------------+
+
+========================================================
+FULL MODEL EXAMPLE
+========================================================
+
+from django.db import models
+
+class Student(models.Model):
+
+    name = models.CharField(max_length=100)
+
+    age = models.IntegerField()
+
+    dob = models.DateField()
+
+========================================================
+FINAL DATABASE TABLE OUTPUT
+========================================================
+
++----+---------+-----+------------+
+| id | name    | age | dob        |
++----+---------+-----+------------+
+| 1  | Ajay    | 20  | 2004-05-10 |
+| 2  | Rahul   | 21  | 2003-09-21 |
++----+---------+-----+------------+
+
+========================================================
+REAL-TIME EXAMPLE
+========================================================
+
+Suppose you are building:
+    • College Management System
+
+Using models you can store:
+    • Student details
+    • Attendance
+    • Marks
+    • Faculty records
+
+inside database tables easily.
+
+========================================================
+FINAL SUMMARY TABLE
+========================================================
+
++------------+-----------------------------------+-----------------------------+
+| Concept    | Purpose                           | Benefit                     |
++------------+-----------------------------------+-----------------------------+
+| ORM        | Python code for database access   | Easier database handling    |
+| Models     | Create database tables            | Organized data storage      |
+| Fields     | Define data types                 | Proper data management      |
++------------+-----------------------------------+-----------------------------+
+
+========================================================
+FINAL CONCLUSION
+========================================================
+
+Models are one of the most important parts of Django.
+
+Using:
+    • ORM
+    • Models
+    • Fields
+
+developers can create and manage databases easily
+using simple Python code.
+
+Result:
+👉 Fast, Secure, and Easy Database Management
+
+========================================================

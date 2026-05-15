@@ -1,0 +1,295 @@
+========================================================
+        DJANGO TEMPLATES (UI LAYER)
+        SIMPLE DETAILED EXPLANATION
+========================================================
+
+Definition:
+Templates in Django are used to create the User Interface
+(UI) of a web application.
+
+Templates help developers display:
+    • Dynamic data
+    • HTML pages
+    • User information
+    • Database content
+
+using HTML + Django Template Language.
+
+========================================================
+WHAT IS UI LAYER?
+========================================================
+
+UI Layer = User Interface Layer
+
+It is the part of application users can see and interact
+with.
+
+Examples:
+    • Login page
+    • Home page
+    • Product page
+    • Student details page
+
+========================================================
+IMPORTANT TEMPLATE CONCEPTS
+========================================================
+
+    • HTML Integration
+    • Template Tags
+    • Variables
+
+========================================================
+1. HTML INTEGRATION
+========================================================
+
+Definition:
+Django templates allow HTML pages to display dynamic data.
+
+--------------------------------------------------------
+Example
+--------------------------------------------------------
+
+views.py
+
+from django.shortcuts import render
+
+def home(request):
+    return render(request, 'home.html')
+
+--------------------------------------------------------
+home.html
+--------------------------------------------------------
+
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+
+<body>
+    <h1>Welcome to Django</h1>
+</body>
+</html>
+
+========================================================
+OUTPUT
+========================================================
+
+Welcome to Django
+
+--------------------------------------------------------
+Explanation
+--------------------------------------------------------
+
+render()
+    → Connects Python view with HTML template
+
+home.html
+    → UI page shown to user
+
+========================================================
+WHY HTML INTEGRATION IS IMPORTANT?
+========================================================
+
+Advantages:
+    • Creates webpage design
+    • Displays user interface
+    • Connects backend with frontend
+
+Result:
+👉 Dynamic web pages can be created easily
+
+========================================================
+2. TEMPLATE TAGS
+========================================================
+
+Definition:
+Template tags are special Django commands used inside HTML
+templates.
+
+Template tags are written using:
+
+{% %}
+
+========================================================
+COMMON TEMPLATE TAGS
+========================================================
+
+    • if condition
+    • for loop
+    • include
+    • block
+    • csrf_token
+
+========================================================
+EXAMPLE – FOR LOOP TEMPLATE TAG
+========================================================
+
+views.py
+
+from django.shortcuts import render
+
+def students(request):
+
+    student_list = ['Ajay', 'Rahul', 'Priya']
+
+    return render(request, 'students.html', {
+        'students': student_list
+    })
+
+--------------------------------------------------------
+students.html
+--------------------------------------------------------
+
+<h1>Student Names</h1>
+
+{% for student in students %}
+
+    <p>{{ student }}</p>
+
+{% endfor %}
+
+========================================================
+OUTPUT
+========================================================
+
+Student Names
+
+Ajay
+Rahul
+Priya
+
+--------------------------------------------------------
+Explanation
+--------------------------------------------------------
+
+{% for %}
+    → Loop start
+
+{{ student }}
+    → Displays current value
+
+{% endfor %}
+    → Loop end
+
+========================================================
+WHY TEMPLATE TAGS ARE IMPORTANT?
+========================================================
+
+Advantages:
+    • Dynamic content display
+    • Repeating data easily
+    • Conditional statements possible
+    • Better UI development
+
+Result:
+👉 HTML becomes dynamic
+
+========================================================
+3. VARIABLES
+========================================================
+
+Definition:
+Variables are used to display dynamic data inside templates.
+
+Variables are written using:
+
+{{ variable }}
+
+========================================================
+EXAMPLE
+========================================================
+
+views.py
+
+from django.shortcuts import render
+
+def profile(request):
+
+    return render(request, 'profile.html', {
+        'name': 'Ajay',
+        'age': 20
+    })
+
+--------------------------------------------------------
+profile.html
+--------------------------------------------------------
+
+<h1>Name: {{ name }}</h1>
+
+<h2>Age: {{ age }}</h2>
+
+========================================================
+OUTPUT
+========================================================
+
+Name: Ajay
+
+Age: 20
+
+--------------------------------------------------------
+Explanation
+--------------------------------------------------------
+
+{{ name }}
+    → Displays name value
+
+{{ age }}
+    → Displays age value
+
+========================================================
+WHY VARIABLES ARE IMPORTANT?
+========================================================
+
+Advantages:
+    • Shows database data
+    • Displays user information
+    • Makes pages dynamic
+
+Result:
+👉 Real-time data can be shown in webpages
+
+========================================================
+REAL-TIME EXAMPLE
+========================================================
+
+Suppose you are building:
+    • College Management System
+
+Using Templates you can display:
+    • Student names
+    • Attendance
+    • Marks
+    • Course details
+
+inside webpages dynamically.
+
+========================================================
+FINAL SUMMARY TABLE
+========================================================
+
++-------------------+----------------------------------+-----------------------------+
+| Topic             | Description                      | Example                     |
++-------------------+----------------------------------+-----------------------------+
+| HTML Integration  | Connects HTML with Django        | render(request, page)       |
+| Template Tags     | Special template commands        | {% for %}                   |
+| Variables         | Displays dynamic data            | {{ name }}                  |
++-------------------+----------------------------------+-----------------------------+
+
+========================================================
+FINAL CONCLUSION
+========================================================
+
+Django Templates help developers create dynamic and
+interactive webpages easily.
+
+Important Features:
+    • HTML Integration
+    • Template Tags
+    • Variables
+
+Result:
+👉 Easy UI Development
+👉 Dynamic Web Pages
+👉 Better User Experience
+
+========================================================

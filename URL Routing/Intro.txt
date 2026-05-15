@@ -1,0 +1,289 @@
+========================================================
+        URL ROUTING IN DJANGO – SIMPLE EXPLANATION
+========================================================
+
+Definition:
+URL Routing in Django is used to connect website URLs
+with Python functions called views.
+
+Simple Meaning:
+    • When user opens a URL,
+      Django decides which function should run.
+
+========================================================
+IMPORTANT URL ROUTING CONCEPTS
+========================================================
+
+    • urls.py
+    • path()
+    • include()
+
+========================================================
+1. urls.py
+========================================================
+
+Definition:
+urls.py is a file used to map URLs to views.
+
+It tells Django:
+    • Which URL should open which page/function.
+
+========================================================
+EXAMPLE
+========================================================
+
+Project Structure:
+
+myproject/
+│
+├── urls.py
+├── views.py
+
+--------------------------------------------------------
+urls.py
+--------------------------------------------------------
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('home/', views.home),
+]
+
+--------------------------------------------------------
+views.py
+--------------------------------------------------------
+
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Welcome to Home Page")
+
+========================================================
+OUTPUT
+========================================================
+
+When user opens:
+
+http://127.0.0.1:8000/home/
+
+Browser Output:
+
+Welcome to Home Page
+
+========================================================
+HOW IT WORKS
+========================================================
+
+User opens URL
+        ↓
+urls.py checks route
+        ↓
+views.home function runs
+        ↓
+Response shown in browser
+
+========================================================
+2. path()
+========================================================
+
+Definition:
+path() is used to define URL routes in Django.
+
+--------------------------------------------------------
+SYNTAX
+--------------------------------------------------------
+
+path('url/', view_function)
+
+========================================================
+EXAMPLE
+========================================================
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('about/', views.about),
+]
+
+--------------------------------------------------------
+views.py
+--------------------------------------------------------
+
+from django.http import HttpResponse
+
+def about(request):
+    return HttpResponse("About Page")
+
+========================================================
+OUTPUT
+========================================================
+
+URL:
+
+http://127.0.0.1:8000/about/
+
+Browser Output:
+
+About Page
+
+========================================================
+WHY path() IS IMPORTANT?
+========================================================
+
+Advantages:
+    • Easy URL creation
+    • Clean routing system
+    • Better website navigation
+
+Result:
+👉 Easy page management
+
+========================================================
+3. include()
+========================================================
+
+Definition:
+include() is used to connect multiple apps in a Django
+project.
+
+Simple Meaning:
+    • Helps organize large projects.
+
+========================================================
+WHY include() IS USED?
+========================================================
+
+Suppose project has:
+    • Student App
+    • Payment App
+    • Product App
+
+Each app can have separate urls.py file.
+
+include() connects them together.
+
+========================================================
+EXAMPLE
+========================================================
+
+--------------------------------------------------------
+Main Project urls.py
+--------------------------------------------------------
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('student/', include('student.urls')),
+]
+
+--------------------------------------------------------
+student app urls.py
+--------------------------------------------------------
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('home/', views.home),
+]
+
+--------------------------------------------------------
+views.py
+--------------------------------------------------------
+
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Student Home Page")
+
+========================================================
+OUTPUT
+========================================================
+
+URL:
+
+http://127.0.0.1:8000/student/home/
+
+Browser Output:
+
+Student Home Page
+
+========================================================
+HOW include() WORKS
+========================================================
+
+Main urls.py
+        ↓
+Transfers control to app urls.py
+        ↓
+App urls.py handles URL
+        ↓
+View function executes
+
+========================================================
+REAL-TIME EXAMPLE
+========================================================
+
+Suppose you are building:
+    • College Management System
+
+Different apps:
+    • Student App
+    • Faculty App
+    • Attendance App
+    • Exam App
+
+Each app has separate URLs.
+
+include() helps connect all apps properly.
+
+========================================================
+ADVANTAGES OF URL ROUTING
+========================================================
+
++----+--------------------------------------+
+| No | Advantage                            |
++----+--------------------------------------+
+| 1  | Easy page navigation                 |
+| 2  | Clean URL structure                  |
+| 3  | Better project organization          |
+| 4  | Supports multiple apps               |
+| 5  | Easy maintenance                     |
++----+--------------------------------------+
+
+========================================================
+FINAL SUMMARY TABLE
+========================================================
+
++------------+----------------------------------------------+
+| Topic      | Description                                  |
++------------+----------------------------------------------+
+| urls.py    | Maps URL to views                            |
+| path()     | Defines route                                |
+| include()  | Connects multiple apps                       |
++------------+----------------------------------------------+
+
+========================================================
+FINAL CONCLUSION
+========================================================
+
+URL Routing is one of the most important parts of Django.
+
+It helps:
+    • Connect URLs with views
+    • Manage website pages
+    • Organize large applications
+
+Main Components:
+    • urls.py
+    • path()
+    • include()
+
+Result:
+👉 Easy and organized web application routing
+
+========================================================

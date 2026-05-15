@@ -1,0 +1,370 @@
+========================================================
+        DJANGO PROJECT STRUCTURE – SIMPLE EXPLANATION
+========================================================
+
+When a Django project is created, Django automatically
+generates important files and folders.
+
+Command to Create Django Project:
+
+django-admin startproject myproject
+
+========================================================
+OUTPUT PROJECT STRUCTURE
+========================================================
+
+myproject/
+│
+├── manage.py
+│
+├── myproject/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── asgi.py
+│
+└── apps/
+
+========================================================
+IMPORTANT DJANGO FILES
+========================================================
+
++---------------+--------------------------------------+
+| File / Folder | Purpose                              |
++---------------+--------------------------------------+
+| manage.py     | Project manager                      |
+| settings.py   | Project configuration                |
+| urls.py       | URL routing                          |
+| wsgi.py       | Deployment entry point               |
+| apps/         | Application modules                  |
++---------------+--------------------------------------+
+
+========================================================
+1. manage.py
+========================================================
+
+Definition:
+manage.py is the main project management file in Django.
+
+It is used to:
+    • Run server
+    • Create apps
+    • Apply migrations
+    • Execute Django commands
+
+========================================================
+EXAMPLE COMMANDS
+========================================================
+
+--------------------------------------------------------
+a) Run Django Server
+--------------------------------------------------------
+
+python manage.py runserver
+
+--------------------------------------------------------
+OUTPUT
+--------------------------------------------------------
+
+Starting development server at:
+http://127.0.0.1:8000/
+
+--------------------------------------------------------
+b) Create App
+--------------------------------------------------------
+
+python manage.py startapp student
+
+--------------------------------------------------------
+OUTPUT
+--------------------------------------------------------
+
+student/
+│
+├── admin.py
+├── apps.py
+├── models.py
+├── views.py
+└── tests.py
+
+========================================================
+WHY manage.py IS IMPORTANT?
+========================================================
+
+Without manage.py:
+    • Cannot easily control Django project
+
+With manage.py:
+    • Easy project management
+
+Result:
+👉 Central control file for Django project
+
+========================================================
+2. settings.py
+========================================================
+
+Definition:
+settings.py contains all project configuration settings.
+
+========================================================
+IMPORTANT SETTINGS
+========================================================
+
+    • Database configuration
+    • Installed apps
+    • Security settings
+    • Static files settings
+    • Middleware settings
+
+========================================================
+EXAMPLE
+========================================================
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'student',
+]
+
+========================================================
+MEANING
+========================================================
+
+INSTALLED_APPS
+    → List of active Django apps
+
+student
+    → Custom application added
+
+========================================================
+DATABASE EXAMPLE
+========================================================
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+========================================================
+OUTPUT
+========================================================
+
+Django connects automatically with SQLite database.
+
+========================================================
+WHY settings.py IS IMPORTANT?
+========================================================
+
+settings.py controls:
+    • Entire Django project behavior
+
+Result:
+👉 Main configuration file
+
+========================================================
+3. urls.py
+========================================================
+
+Definition:
+urls.py is used to define URL routing in Django.
+
+URL routing means:
+    • Connecting URLs to functions/views
+
+========================================================
+EXAMPLE
+========================================================
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('home/', views.home),
+]
+
+========================================================
+MEANING
+========================================================
+
+path()
+    → Creates URL path
+
+'home/'
+    → URL name
+
+views.home
+    → Function executed
+
+========================================================
+OUTPUT
+========================================================
+
+If user visits:
+
+http://127.0.0.1:8000/home/
+
+Django executes:
+
+views.home()
+
+========================================================
+WHY urls.py IS IMPORTANT?
+========================================================
+
+Without urls.py:
+    • Website pages cannot be connected
+
+Result:
+👉 Controls website navigation
+
+========================================================
+4. wsgi.py
+========================================================
+
+Full Form:
+WSGI = Web Server Gateway Interface
+
+========================================================
+DEFINITION
+========================================================
+
+wsgi.py is used for deploying Django applications on
+web servers.
+
+It acts as a bridge between:
+    • Django application
+    • Web server
+
+========================================================
+EXAMPLE
+========================================================
+
+application = get_wsgi_application()
+
+========================================================
+MEANING
+========================================================
+
+get_wsgi_application()
+    → Loads Django application for server
+
+========================================================
+REAL-TIME USE
+========================================================
+
+Used when deploying Django project on:
+    • Apache
+    • Nginx
+    • Gunicorn
+
+========================================================
+WHY wsgi.py IS IMPORTANT?
+========================================================
+
+Without wsgi.py:
+    • Django project cannot run properly on production server
+
+Result:
+👉 Important for deployment
+
+========================================================
+5. apps/ (APPLICATION MODULES)
+========================================================
+
+Definition:
+Apps are small modules inside Django projects used to
+perform specific tasks.
+
+========================================================
+EXAMPLES OF APPS
+========================================================
+
+    • Student App
+    • Payment App
+    • Blog App
+    • Attendance App
+
+========================================================
+CREATE APP EXAMPLE
+========================================================
+
+python manage.py startapp student
+
+========================================================
+OUTPUT
+========================================================
+
+student/
+│
+├── admin.py
+├── apps.py
+├── models.py
+├── views.py
+├── urls.py
+└── migrations/
+
+========================================================
+IMPORTANT FILES INSIDE APP
+========================================================
+
++---------------+----------------------------------+
+| File          | Purpose                          |
++---------------+----------------------------------+
+| models.py     | Database models                  |
+| views.py      | Business logic                   |
+| admin.py      | Admin panel settings             |
+| urls.py       | App URL routing                  |
+| migrations/   | Database migration files         |
++---------------+----------------------------------+
+
+========================================================
+WHY APPS ARE IMPORTANT?
+========================================================
+
+Advantages:
+    • Better project organization
+    • Reusable modules
+    • Easier maintenance
+    • Supports large projects
+
+Result:
+👉 Modular development
+
+========================================================
+FINAL SUMMARY TABLE
+========================================================
+
++---------------+------------------------------------------+
+| File / Folder | Main Purpose                             |
++---------------+------------------------------------------+
+| manage.py     | Manage Django project                    |
+| settings.py   | Configure project settings               |
+| urls.py       | Connect URLs to views                    |
+| wsgi.py       | Deploy Django app on server              |
+| apps/         | Create modular applications              |
++---------------+------------------------------------------+
+
+========================================================
+FINAL CONCLUSION
+========================================================
+
+Django project structure is designed to make:
+    • Development easier
+    • Project organization better
+    • Deployment simpler
+
+Important Files:
+    • manage.py → Project control
+    • settings.py → Configuration
+    • urls.py → URL management
+    • wsgi.py → Deployment
+    • apps/ → Modular application structure
+
+Result:
+👉 Easy, Organized, and Scalable Web Development
+
+========================================================
